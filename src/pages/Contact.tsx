@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   Phone,
   MessageCircle,
@@ -17,6 +18,8 @@ import {
 import contactHero from "@/assets/contact-hero.jpg";
 
 const Contact = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen bg-background font-poppins">
       <Navigation />
@@ -29,13 +32,10 @@ const Contact = () => {
         <div className="absolute inset-0 bg-gradient-hero"></div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-            Need Help? We're Here
+            {t("Need Help? We're Here", "मदद चाहिए? हम हैं।")}
           </h1>
-          <p className="font-noto-hindi text-2xl md:text-4xl text-white/90 mb-6">
-            मदद चाहिए? हम हैं।
-          </p>
           <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-            Our team supports you in Hindi and English. Get instant help for pickups, payments, or partnerships.
+            {t("Our team supports you in Hindi and English. Get instant help for pickups, payments, or partnerships.", "हमारी टीम हिंदी और अंग्रेजी में आपकी सहायता करती है। पिकअप, भुगतान या साझेदारी के लिए तुरंत सहायता प्राप्त करें।")}
           </p>
         </div>
       </section>
@@ -51,8 +51,7 @@ const Contact = () => {
                 <div className="w-16 h-16 bg-gradient-sunrise rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <Phone className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Call Now</h3>
-                <p className="font-noto-hindi text-sm text-muted-foreground mb-4">अभी कॉल करें</p>
+                <h3 className="font-semibold text-lg mb-2">{t("Call Now", "अभी कॉल करें")}</h3>
                 <Button 
                   size="lg" 
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
@@ -72,14 +71,13 @@ const Contact = () => {
                   <MessageCircle className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">WhatsApp</h3>
-                <p className="font-noto-hindi text-sm text-muted-foreground mb-4">व्हाट्सऐप</p>
                 <Button 
                   size="lg" 
                   className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground"
                   asChild
                 >
                   <a href="https://wa.me/919876543210">
-                    Message Us
+                    {t("Message Us", "संदेश भेजें")}
                   </a>
                 </Button>
               </CardContent>
@@ -91,8 +89,7 @@ const Contact = () => {
                 <div className="w-16 h-16 bg-gradient-sunrise rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <Mail className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Email</h3>
-                <p className="font-noto-hindi text-sm text-muted-foreground mb-4">ईमेल</p>
+                <h3 className="font-semibold text-lg mb-2">{t("Email", "ईमेल")}</h3>
                 <Button 
                   size="lg" 
                   variant="outline"
@@ -100,7 +97,7 @@ const Contact = () => {
                   asChild
                 >
                   <a href="mailto:contact@saubhagya.com">
-                    Send Message
+                    {t("Send Message", "संदेश भेजें")}
                   </a>
                 </Button>
               </CardContent>
@@ -113,8 +110,7 @@ const Contact = () => {
       <section className="py-20 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Send Us a Message</h2>
-            <p className="font-noto-hindi text-xl text-muted-foreground">हमें संदेश भेजें</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">{t("Send Us a Message", "हमें संदेश भेजें")}</h2>
           </div>
           
           <Card className="bg-gradient-warm p-8">
@@ -123,17 +119,17 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <Label htmlFor="name" className="text-sm font-medium text-card-foreground">
-                      Name / नाम
+                      {t("Name", "नाम")}
                     </Label>
                     <Input 
                       id="name"
-                      placeholder="Your full name"
+                      placeholder={t("Your full name", "आपका पूरा नाम")}
                       className="mt-2"
                     />
                   </div>
                   <div>
                     <Label htmlFor="phone" className="text-sm font-medium text-card-foreground">
-                      Phone / फोन
+                      {t("Phone", "फोन")}
                     </Label>
                     <Input 
                       id="phone"
@@ -146,22 +142,22 @@ const Contact = () => {
                 
                 <div>
                   <Label htmlFor="village" className="text-sm font-medium text-card-foreground">
-                    Village/City / गांव/शहर
+                    {t("Village/City", "गांव/शहर")}
                   </Label>
                   <Input 
                     id="village"
-                    placeholder="Your location"
+                    placeholder={t("Your location", "आपका स्थान")}
                     className="mt-2"
                   />
                 </div>
                 
                 <div>
                   <Label htmlFor="message" className="text-sm font-medium text-card-foreground">
-                    Message / संदेश
+                    {t("Message", "संदेश")}
                   </Label>
                   <Textarea 
                     id="message"
-                    placeholder="How can we help you? / हम आपकी कैसे मदद कर सकते हैं?"
+                    placeholder={t("How can we help you?", "हम आपकी कैसे मदद कर सकते हैं?")}
                     rows={5}
                     className="mt-2"
                   />
@@ -174,14 +170,14 @@ const Contact = () => {
                 >
                   <a href="mailto:contact@saubhagya.com?subject=Contact Form Message">
                     <Mail className="mr-2 h-5 w-5" />
-                    Send Message / संदेश भेजें
+                    {t("Send Message", "संदेश भेजें")}
                   </a>
                 </Button>
               </form>
               
               <div className="mt-8 p-4 bg-card/80 backdrop-blur-sm rounded-lg">
                 <p className="text-sm text-card-foreground text-center">
-                  <strong>Note:</strong> This is a static form. Click "Send Message" to open your email client with the details filled in.
+                  <strong>{t("Note:", "नोट:")}</strong> {t("This is a static form. Click \"Send Message\" to open your email client with the details filled in.", "यह एक स्टेटिक फॉर्म है। विवरण भरकर अपना ईमेल क्लाइंट खोलने के लिए \"संदेश भेजें\" पर क्लिक करें।")}
                 </p>
               </div>
             </CardContent>
@@ -193,8 +189,7 @@ const Contact = () => {
       <section className="py-20 bg-gradient-earth">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Field Support</h2>
-            <p className="font-noto-hindi text-xl text-muted-foreground">फील्ड सहायता</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">{t("Field Support", "फील्ड सहायता")}</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -203,11 +198,9 @@ const Contact = () => {
             <Card className="bg-card/80 backdrop-blur-sm p-8">
               <CardContent className="p-0 text-center">
                 <Mic className="h-16 w-16 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Record Voice Message</h3>
-                <p className="font-noto-hindi text-sm text-muted-foreground mb-4">आवाज़ संदेश रिकॉर्ड करें</p>
+                <h3 className="text-xl font-semibold mb-2">{t("Record Voice Message", "आवाज़ संदेश रिकॉर्ड करें")}</h3>
                 <p className="text-card-foreground mb-6">
-                  Call our helpline and leave a voice message in Hindi or English. 
-                  Our team will call you back within 2 hours.
+                  {t("Call our helpline and leave a voice message in Hindi or English. Our team will call you back within 2 hours.", "हमारी हेल्पलाइन पर कॉल करें और हिंदी या अंग्रेजी में एक आवाज़ संदेश छोड़ें। हमारी टीम 2 घंटे के भीतर आपको वापस कॉल करेगी।")}
                 </p>
                 <Button 
                   size="lg"
@@ -216,7 +209,7 @@ const Contact = () => {
                 >
                   <a href="tel:+919876543210">
                     <Headphones className="mr-2 h-5 w-5" />
-                    Call to Record
+                    {t("Call to Record", "रिकॉर्ड करने के लिए कॉल करें")}
                   </a>
                 </Button>
               </CardContent>
@@ -226,11 +219,9 @@ const Contact = () => {
             <Card className="bg-card/80 backdrop-blur-sm p-8">
               <CardContent className="p-0 text-center">
                 <Users className="h-16 w-16 text-secondary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Local Support Team</h3>
-                <p className="font-noto-hindi text-sm text-muted-foreground mb-4">स्थानीय सहायता टीम</p>
+                <h3 className="text-xl font-semibold mb-2">{t("Local Support Team", "स्थानीय सहायता टीम")}</h3>
                 <p className="text-card-foreground mb-6">
-                  Our field representatives visit gaushalas regularly to ensure 
-                  smooth operations and address any concerns directly.
+                  {t("Our field representatives visit gaushalas regularly to ensure smooth operations and address any concerns directly.", "हमारे फील्ड प्रतिनिधि नियमित रूप से गौशालाओं का दौरा करते हैं ताकि सुचारू संचालन सुनिश्चित हो सके और किसी भी चिंता का सीधे समाधान हो सके।")}
                 </p>
                 <Button 
                   size="lg"
@@ -240,7 +231,7 @@ const Contact = () => {
                 >
                   <a href="https://wa.me/919876543210?text=I%20need%20local%20support">
                     <MessageCircle className="mr-2 h-5 w-5" />
-                    Request Visit
+                    {t("Request Visit", "विज़िट का अनुरोध करें")}
                   </a>
                 </Button>
               </CardContent>
@@ -259,9 +250,8 @@ const Contact = () => {
               <CardContent className="p-0">
                 <div className="flex items-center mb-6">
                   <MapPin className="h-8 w-8 text-primary mr-3" />
-                  <h3 className="text-2xl font-bold text-primary">Office Address</h3>
+                  <h3 className="text-2xl font-bold text-primary">{t("Office Address", "कार्यालय का पता")}</h3>
                 </div>
-                <p className="font-noto-hindi text-lg text-muted-foreground mb-4">कार्यालय का पता</p>
                 <div className="space-y-3 text-card-foreground">
                   <p className="font-semibold">Shri Krishna Yogeshwar Gaushala</p>
                   <p>Agar Malwa, Madhya Pradesh</p>
@@ -271,13 +261,12 @@ const Contact = () => {
                 <div className="mt-8">
                   <div className="flex items-center mb-4">
                     <Clock className="h-6 w-6 text-primary mr-3" />
-                    <h4 className="font-semibold text-lg">Operating Hours</h4>
+                    <h4 className="font-semibold text-lg">{t("Operating Hours", "संचालन का समय")}</h4>
                   </div>
-                  <p className="font-noto-hindi text-sm text-muted-foreground mb-2">संचालन का समय</p>
                   <div className="space-y-1 text-card-foreground">
-                    <p>Monday - Saturday: 8:00 AM - 6:00 PM</p>
-                    <p>Sunday: 9:00 AM - 1:00 PM</p>
-                    <p className="text-sm text-muted-foreground">24/7 WhatsApp support available</p>
+                    <p>{t("Monday - Saturday: 8:00 AM - 6:00 PM", "सोमवार - शनिवार: सुबह 8:00 - शाम 6:00")}</p>
+                    <p>{t("Sunday: 9:00 AM - 1:00 PM", "रविवार: सुबह 9:00 - दोपहर 1:00")}</p>
+                    <p className="text-sm text-muted-foreground">{t("24/7 WhatsApp support available", "24/7 WhatsApp सहायता उपलब्ध")}</p>
                   </div>
                 </div>
               </CardContent>
@@ -286,14 +275,13 @@ const Contact = () => {
             {/* Contact Information */}
             <Card className="p-8 bg-gradient-warm">
               <CardContent className="p-0">
-                <h3 className="text-2xl font-bold text-primary mb-4">Contact Information</h3>
-                <p className="font-noto-hindi text-lg text-muted-foreground mb-6">संपर्क जानकारी</p>
+                <h3 className="text-2xl font-bold text-primary mb-4">{t("Contact Information", "संपर्क जानकारी")}</h3>
                 
                 <div className="space-y-6">
                   <div className="flex items-center">
                     <Phone className="h-6 w-6 text-primary mr-4" />
                     <div>
-                      <p className="font-semibold">Phone</p>
+                      <p className="font-semibold">{t("Phone", "फोन")}</p>
                       <a href="tel:+919876543210" className="text-primary hover:underline">
                         +91 98765 43210
                       </a>
@@ -313,7 +301,7 @@ const Contact = () => {
                   <div className="flex items-center">
                     <Mail className="h-6 w-6 text-primary mr-4" />
                     <div>
-                      <p className="font-semibold">Email</p>
+                      <p className="font-semibold">{t("Email", "ईमेल")}</p>
                       <a href="mailto:contact@saubhagya.com" className="text-primary hover:underline">
                         contact@saubhagya.com
                       </a>
@@ -322,10 +310,9 @@ const Contact = () => {
                 </div>
                 
                 <div className="mt-8 p-4 bg-card/80 backdrop-blur-sm rounded-lg">
-                  <h4 className="font-semibold text-primary mb-2">Language Support</h4>
-                  <p className="font-noto-hindi text-sm text-muted-foreground mb-1">भाषा सहायता</p>
+                  <h4 className="font-semibold text-primary mb-2">{t("Language Support", "भाषा सहायता")}</h4>
                   <p className="text-sm text-card-foreground">
-                    Hindi & English support available. Response within 24 hours guaranteed.
+                    {t("Hindi & English support available. Response within 24 hours guaranteed.", "हिंदी और अंग्रेजी सहायता उपलब्ध है। 24 घंटे के भीतर जवाब की गारंटी।")}
                   </p>
                 </div>
               </CardContent>
@@ -338,9 +325,9 @@ const Contact = () => {
       <footer className="bg-saubhagya-earth text-white py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="font-bold text-xl mb-2">Project Saubhagya</h3>
-          <p className="font-noto-hindi text-lg mb-4">प्रोजेक्ट सौभाग्य</p>
+          <p className="font-noto-hindi text-lg mb-4">{t("", "प्रोजेक्ट सौभाग्य")}</p>
           <p className="text-white/80 mb-6">
-            Empowering farmers through cow-centered biogas solutions
+            {t("Empowering farmers through cow-centered biogas solutions", "गाय-केंद्रित बायो गैस समाधानों के माध्यम से किसानों को सशक्त बनाना")}
           </p>
           <div className="flex justify-center space-x-6">
             <a href="tel:+919876543210" className="text-white/80 hover:text-white">

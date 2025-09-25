@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, MessageCircle } from "lucide-react";
+import { Menu, X, Phone, MessageCircle, Languages } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import saubhagyaLogo from "@/assets/saubhagya-logo.png";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { language, setLanguage, t } = useLanguage();
 
   const navItems = [
-    { href: "/", label: "Home", labelHi: "होम" },
-    { href: "/corporate", label: "Corporate", labelHi: "कॉर्पोरेट" },
-    { href: "/about", label: "About Us", labelHi: "हमारे बारे में" },
-    { href: "/services", label: "Services", labelHi: "सेवाएं" },
-    { href: "/contact", label: "Contact", labelHi: "संपर्क" },
+    { href: "/", label: t("Home", "होम") },
+    { href: "/corporate", label: t("Corporate", "कॉर्पोरेट") },
+    { href: "/about", label: t("About Us", "हमारे बारे में") },
+    { href: "/services", label: t("Services", "सेवाएं") },
+    { href: "/contact", label: t("Contact", "संपर्क") },
   ];
 
   return (
@@ -29,7 +31,7 @@ const Navigation = () => {
             />
             <div>
               <h2 className="font-poppins font-bold text-primary text-lg">Saubhagya</h2>
-              <p className="font-noto-hindi text-xs text-muted-foreground">सौभाग्य</p>
+              <p className="font-noto-hindi text-xs text-muted-foreground">{t("", "सौभाग्य")}</p>
             </div>
           </Link>
 
@@ -45,18 +47,24 @@ const Navigation = () => {
                     : "text-foreground hover:text-primary"
                 }`}
               >
-                <div className="flex flex-col items-center">
-                  <span>{item.label}</span>
-                  <span className="font-noto-hindi text-xs text-muted-foreground">
-                    {item.labelHi}
-                  </span>
-                </div>
+                {item.label}
               </Link>
             ))}
           </div>
 
           {/* Quick Actions */}
           <div className="hidden md:flex items-center space-x-3">
+            {/* Language Toggle */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
+              className="text-primary hover:bg-primary/10"
+            >
+              <Languages className="h-4 w-4 mr-1" />
+              {language === 'en' ? 'हिंदी' : 'Eng'}
+            </Button>
+            
             <Button 
               variant="outline" 
               size="sm"
@@ -65,7 +73,7 @@ const Navigation = () => {
             >
               <a href="tel:+919876543210" className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
-                <span className="font-poppins">Call</span>
+                <span className="font-poppins">{t("Call", "कॉल")}</span>
               </a>
             </Button>
             <Button 
@@ -107,14 +115,21 @@ const Navigation = () => {
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div>
-                    <span>{item.label}</span>
-                    <span className="font-noto-hindi text-xs text-muted-foreground ml-2">
-                      {item.labelHi}
-                    </span>
-                  </div>
+                  {item.label}
                 </Link>
               ))}
+              
+              {/* Mobile Language Toggle */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
+                className="mx-3 my-2 text-primary hover:bg-primary/10"
+              >
+                <Languages className="h-4 w-4 mr-2" />
+                {language === 'en' ? 'Switch to हिंदी' : 'Switch to English'}
+              </Button>
+              
               <div className="flex space-x-3 px-3 py-2">
                 <Button 
                   variant="outline" 
@@ -124,7 +139,7 @@ const Navigation = () => {
                 >
                   <a href="tel:+919876543210" className="flex items-center justify-center space-x-2">
                     <Phone className="h-4 w-4" />
-                    <span>Call</span>
+                    <span>{t("Call", "कॉल")}</span>
                   </a>
                 </Button>
                 <Button 
