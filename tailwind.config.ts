@@ -57,6 +57,33 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Saubhagya brand colors
+        saubhagya: {
+          green: "hsl(var(--saubhagya-green))",
+          ochre: "hsl(var(--saubhagya-ochre))",
+          cream: "hsl(var(--saubhagya-cream))",
+          earth: "hsl(var(--saubhagya-earth))",
+          sky: "hsl(var(--saubhagya-sky))",
+        },
+      },
+      backgroundImage: {
+        'gradient-sunrise': 'var(--gradient-sunrise)',
+        'gradient-earth': 'var(--gradient-earth)',
+        'gradient-hero': 'var(--gradient-hero)',
+        'gradient-warm': 'var(--gradient-warm)',
+      },
+      boxShadow: {
+        'warm': 'var(--shadow-warm)',
+        'earth': 'var(--shadow-earth)',
+        'green': 'var(--shadow-green)',
+      },
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'],
+        'noto-hindi': ['Noto Sans Devanagari', 'sans-serif'],
+      },
+      transitionTimingFunction: {
+        'warm': 'var(--transition-warm)',
+        'bounce': 'var(--transition-bounce)',
       },
       borderRadius: {
         lg: "var(--radius)",
